@@ -13,11 +13,14 @@
 
 using namespace std;
 
-/*
-bool checkForIllegalCharacters(string roman){
-
+bool checkForIllegalCharacters(string &str){
+	for (unsigned int i = 0; i < str.length(); i++) {
+		if(!(str[i]=='M' ||str[i]=='D' ||str[i]=='C' ||str[i]=='L' ||str[i]=='X' ||str[i]=='V' ||str[i]=='I')){
+			return false;
+		}
+	}
+	return true;
 }
-*/
 
 void convertToUpper(string &str) {
 	for (unsigned int i = 0; i < str.length(); i++) {
@@ -30,16 +33,18 @@ void convertToUpper(string &str) {
 
 int main( int argc, char *argv[] ) {
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-
+	bool validate;
 	string roman_number1 = "mc";
-	string roman_number2 = "IV";
+	string roman_number2 = "R";
 
 
 	convertToUpper(roman_number1);
-
-	cout << roman_number1 << endl;
-
-
+	cout << "Converted Roman number to Capitals" << roman_number1 << endl;
+	validate = checkForIllegalCharacters(roman_number2);
+	if(validate)
+		cout << "Roman Number is valid" << endl;
+	else
+		cout << "Roman Number is not valid" << endl;
 
 	return 0;
 }
